@@ -30,3 +30,11 @@ E:\projects\MobileApp2\Moshaf_Elgwaa\MoshafElgwaaWeb\MobileApplication.Context\b
 E:\projects\MobileApp2\Moshaf_Elgwaa\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.dll
 E:\projects\MobileApp2\Moshaf_Elgwaa\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.pdb
 E:\projects\MobileApp2\Moshaf_Elgwaa\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.csprojResolveAssemblyReference.cache
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\MobileApplication.Context.dll.config
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\MobileApplication.Context.dll
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\MobileApplication.Context.pdb
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\EntityFramework.dll
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\EntityFramework.xml
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.csprojResolveAssemblyReference.cache
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.dll
+E:\Hala\Git\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.pdb

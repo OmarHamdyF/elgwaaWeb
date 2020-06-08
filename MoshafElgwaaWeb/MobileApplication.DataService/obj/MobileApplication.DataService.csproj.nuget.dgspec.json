@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataService\\MobileApplication.DataService.csproj": {}
+  },
+  "projects": {
+    "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj",
+        "projectName": "MobileApplication.Context",
+        "projectPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj"
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
+    "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataModel\\MobileApplication.DataModel.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataModel\\MobileApplication.DataModel.csproj",
+        "projectName": "MobileApplication.DataModel",
+        "projectPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataModel\\MobileApplication.DataModel.csproj",
+        "frameworks": {
+          "net45": {
+            "projectReferences": {
+              "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj": {
+                "projectPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
+    "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataService\\MobileApplication.DataService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataService\\MobileApplication.DataService.csproj",
+        "projectName": "MobileApplication.DataService",
+        "projectPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataService\\MobileApplication.DataService.csproj",
+        "packagesPath": "C:\\Users\\Omar\\.nuget\\packages\\",
+        "outputPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataService\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\Omar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "projectReferences": {
+              "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj": {
+                "projectPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.Context\\MobileApplication.Context.csproj"
+              },
+              "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataModel\\MobileApplication.DataModel.csproj": {
+                "projectPath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataModel\\MobileApplication.DataModel.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {
+          "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

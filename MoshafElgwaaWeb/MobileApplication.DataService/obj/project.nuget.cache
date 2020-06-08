@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "V1ZjIr2AfxE05OVn+8QwfIEdATPipNkCIDq5SMoXoClK3LfMNflb6SlB+vPFKPtc+tmTtQQxi0iOcIXNnpWDaA==",
+  "success": true,
+  "projectFilePath": "E:\\Omar Q-vision\\WebApplication\\elgwaaWeb\\MoshafElgwaaWeb\\MobileApplication.DataService\\MobileApplication.DataService.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Omar\\.nuget\\packages\\microsoft.aspnet.mvc\\5.0.0\\microsoft.aspnet.mvc.5.0.0.nupkg.sha512",
+    "C:\\Users\\Omar\\.nuget\\packages\\microsoft.aspnet.razor\\3.0.0\\microsoft.aspnet.razor.3.0.0.nupkg.sha512",
+    "C:\\Users\\Omar\\.nuget\\packages\\microsoft.aspnet.webpages\\3.0.0\\microsoft.aspnet.webpages.3.0.0.nupkg.sha512",
+    "C:\\Users\\Omar\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

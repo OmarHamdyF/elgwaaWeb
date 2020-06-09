@@ -238,6 +238,12 @@
       <End Role="Doaa" EntitySet="Doaa" />
       <End Role="DoaaItemSource" EntitySet="DoaaItemSource" />
     </AssociationSet>
+    <EntitySet Name="DoaaContent" EntityType="QVMobileApplicationModel.DoaaContent" />
+    <EntitySet Name="sysdiagrams" EntityType="QVMobileApplicationModel.sysdiagrams" />
+    <AssociationSet Name="FK_DoaaContent_Doaa" Association="QVMobileApplicationModel.FK_DoaaContent_Doaa">
+      <End Role="Doaa" EntitySet="Doaa" />
+      <End Role="DoaaContent" EntitySet="DoaaContent" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="TableRef_Result">
     <Property Type="String" Name="FK_TABLE_NAME" Nullable="true" MaxLength="128" />
@@ -601,6 +607,9 @@
     <NavigationProperty Name="Group" Relationship="QVMobileApplicationModel.FK_GroupTarget_Group" FromRole="GroupTarget" ToRole="Group" />
     <NavigationProperty Name="PeriodType" Relationship="QVMobileApplicationModel.FK_GroupTarget_PeriodType" FromRole="GroupTarget" ToRole="PeriodType" />
     <NavigationProperty Name="TargetType" Relationship="QVMobileApplicationModel.FK_GroupTarget_TargetType" FromRole="GroupTarget" ToRole="TargetType" />
+    <Property Name="StartAya" Type="Int32" />
+    <Property Name="EndAya" Type="Int32" />
+    <Property Name="EndSurahID" Type="Int32" />
   </EntityType>
   <EntityType Name="GroupUser">
     <Key>
@@ -823,6 +832,7 @@
     <NavigationProperty Name="GroupUser" Relationship="QVMobileApplicationModel.FK_GroupUser_User" FromRole="User" ToRole="GroupUser" />
     <NavigationProperty Name="UserAyat" Relationship="QVMobileApplicationModel.FK_UserAyat_User" FromRole="User" ToRole="UserAyat" />
     <NavigationProperty Name="UserCode" Relationship="QVMobileApplicationModel.FK_UserCode_User" FromRole="User" ToRole="UserCode" />
+    <Property Name="NotificationOn" Type="Boolean" />
   </EntityType>
   <EntityType Name="UserAyat">
     <Key>
@@ -1378,6 +1388,7 @@
     <Property Name="DoaaMeanings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DoaaMainCategory" Relationship="QVMobileApplicationModel.FK_Doaa_DoaaMainCategory" FromRole="Doaa" ToRole="DoaaMainCategory" />
     <NavigationProperty Name="DoaaItemSource" Relationship="QVMobileApplicationModel.FK_DoaaDetails_Doaa" FromRole="Doaa" ToRole="DoaaItemSource" />
+    <NavigationProperty Name="DoaaContent1" Relationship="QVMobileApplicationModel.FK_DoaaContent_Doaa" FromRole="Doaa" ToRole="DoaaContent" />
   </EntityType>
   <Association Name="FK_ArticleItemExplanation_Article">
     <End Type="QVMobileApplicationModel.Article" Role="Article" Multiplicity="1" />
@@ -1423,7 +1434,7 @@
     <Property Name="ItemSource" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ItemSynonyms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Reference" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Doaa" Relationship="QVMobileApplicationModel.FK_DoaaDetails_Doaa" FromRole="DoaaItemSource" ToRole="Doaa" />
   </EntityType>
   <Association Name="FK_DoaaDetails_Doaa">
@@ -1434,6 +1445,39 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="DoaaItemSource">
+        <PropertyRef Name="DoaaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DoaaContent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="DoaaID" Type="Int32" Nullable="false" />
+    <Property Name="VoicePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Doaa" Relationship="QVMobileApplicationModel.FK_DoaaContent_Doaa" FromRole="DoaaContent" ToRole="Doaa" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_DoaaContent_Doaa">
+    <End Type="QVMobileApplicationModel.Doaa" Role="Doaa" Multiplicity="1" />
+    <End Type="QVMobileApplicationModel.DoaaContent" Role="DoaaContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doaa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoaaContent">
         <PropertyRef Name="DoaaID" />
       </Dependent>
     </ReferentialConstraint>

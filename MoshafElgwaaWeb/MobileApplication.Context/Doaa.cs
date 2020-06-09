@@ -17,6 +17,7 @@ namespace MobileApplication.Context
         public Doaa()
         {
             this.DoaaItemSource = new HashSet<DoaaItemSource>();
+            this.DoaaContent1 = new HashSet<DoaaContent>();
         }
     
         public int ID { get; set; }
@@ -27,5 +28,6 @@ namespace MobileApplication.Context
     
         public virtual DoaaMainCategory DoaaMainCategory { get; set; }
         public virtual ICollection<DoaaItemSource> DoaaItemSource { get; set; }
+        public virtual ICollection<DoaaContent> DoaaContent1 { get; set; }
     }
 }

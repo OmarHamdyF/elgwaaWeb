@@ -78,6 +78,8 @@ namespace MobileApplication.Context
         public DbSet<Doaa> Doaa { get; set; }
         public DbSet<NamesOfAllah> NamesOfAllah { get; set; }
         public DbSet<DoaaItemSource> DoaaItemSource { get; set; }
+        public DbSet<DoaaContent> DoaaContent { get; set; }
+        public DbSet<sysdiagrams> sysdiagrams { get; set; }
     
         public virtual ObjectResult<TableRef_Result> TableRef(string table)
         {

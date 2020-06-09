@@ -316,6 +316,9 @@
     <EntitySetMapping Name="GroupTarget">
       <EntityTypeMapping TypeName="QVMobileApplicationModel.GroupTarget">
         <MappingFragment StoreEntitySet="GroupTarget">
+          <ScalarProperty Name="EndSurahID" ColumnName="EndSurahID" />
+          <ScalarProperty Name="EndAya" ColumnName="EndAya" />
+          <ScalarProperty Name="StartAya" ColumnName="StartAya" />
           <ScalarProperty Name="PagesCount" ColumnName="PagesCount" />
           <ScalarProperty Name="EndPage" ColumnName="EndPage" />
           <ScalarProperty Name="StartPage" ColumnName="StartPage" />
@@ -538,6 +541,7 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="QVMobileApplicationModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="NotificationOn" ColumnName="NotificationOn" />
           <ScalarProperty Name="APNID" ColumnName="APNID" />
           <ScalarProperty Name="GCMID" ColumnName="GCMID" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -617,6 +621,28 @@
           <ScalarProperty Name="SourceNumber" ColumnName="SourceNumber" />
           <ScalarProperty Name="DoaaID" ColumnName="DoaaID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoaaContent">
+      <EntityTypeMapping TypeName="QVMobileApplicationModel.DoaaContent">
+        <MappingFragment StoreEntitySet="DoaaContent">
+          <ScalarProperty Name="VoicePath" ColumnName="VoicePath" />
+          <ScalarProperty Name="DoaaID" ColumnName="DoaaID" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="QVMobileApplicationModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

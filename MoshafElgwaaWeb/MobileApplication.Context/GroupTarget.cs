@@ -26,6 +26,9 @@ namespace MobileApplication.Context
         public Nullable<int> StartPage { get; set; }
         public Nullable<int> EndPage { get; set; }
         public Nullable<int> PagesCount { get; set; }
+        public Nullable<int> StartAya { get; set; }
+        public Nullable<int> EndAya { get; set; }
+        public Nullable<int> EndSurahID { get; set; }
     
         public virtual Group Group { get; set; }
         public virtual PeriodType PeriodType { get; set; }

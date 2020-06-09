@@ -35,8 +35,8 @@ E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Cont
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\MobileApplication.Context.pdb
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\EntityFramework.dll
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\bin\Debug\EntityFramework.xml
-E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.csprojAssemblyReference.cache
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.csproj.CoreCompileInputs.cache
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.csproj.CopyComplete
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.dll
 E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.pdb
+E:\Omar Q-vision\WebApplication\elgwaaWeb\MoshafElgwaaWeb\MobileApplication.Context\obj\Debug\MobileApplication.Context.csprojAssemblyReference.cache

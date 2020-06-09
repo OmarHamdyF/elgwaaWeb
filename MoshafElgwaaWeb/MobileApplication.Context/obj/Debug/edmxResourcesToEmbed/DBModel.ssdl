@@ -268,6 +268,16 @@
     <Property Name="DoaaContent" Type="nvarchar(max)" />
     <Property Name="DoaaMeanings" Type="nvarchar(max)" />
   </EntityType>
+  <EntityType Name="DoaaContent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Order" Type="int" Nullable="false" />
+    <Property Name="DoaaID" Type="int" Nullable="false" />
+    <Property Name="VoicePath" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="DoaaItemSource">
     <Key>
       <PropertyRef Name="ID" />
@@ -278,7 +288,7 @@
     <Property Name="ItemSource" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ItemSynonyms" Type="nvarchar(max)" />
     <Property Name="Type" Type="nvarchar" MaxLength="150" />
-    <Property Name="Reference" Type="nvarchar(max)" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="DoaaMainCategory">
     <Key>
@@ -323,6 +333,9 @@
     <Property Name="StartPage" Type="int" />
     <Property Name="EndPage" Type="int" />
     <Property Name="PagesCount" Type="int" />
+    <Property Name="StartAya" Type="int" />
+    <Property Name="EndAya" Type="int" />
+    <Property Name="EndSurahID" Type="int" />
   </EntityType>
   <EntityType Name="GroupUser">
     <Key>
@@ -522,6 +535,16 @@
     <Property Name="StartAyah" Type="int" />
     <Property Name="EndAyah" Type="int" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="TargetType">
     <Key>
       <PropertyRef Name="ID" />
@@ -541,6 +564,7 @@
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="GCMID" Type="nvarchar" MaxLength="300" />
     <Property Name="APNID" Type="nvarchar" MaxLength="300" />
+    <Property Name="NotificationOn" Type="bit" />
   </EntityType>
   <EntityType Name="UserAyat">
     <Key>
@@ -901,6 +925,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_DoaaContent_Doaa">
+    <End Role="Doaa" Type="Self.Doaa" Multiplicity="1" />
+    <End Role="DoaaContent" Type="Self.DoaaContent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doaa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DoaaContent">
+        <PropertyRef Name="DoaaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_DoaaDetails_Doaa">
     <End Role="Doaa" Type="Self.Doaa" Multiplicity="1" />
     <End Role="DoaaItemSource" Type="Self.DoaaItemSource" Multiplicity="*" />
@@ -1157,6 +1193,7 @@
     <EntitySet Name="CU_Role_Program" EntityType="Self.CU_Role_Program" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DaysOfWeek" EntityType="Self.DaysOfWeek" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Doaa" EntityType="Self.Doaa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoaaContent" EntityType="Self.DoaaContent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoaaItemSource" EntityType="Self.DoaaItemSource" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoaaMainCategory" EntityType="Self.DoaaMainCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
@@ -1180,6 +1217,7 @@
     <EntitySet Name="SMS_ConfigParam" EntityType="Self.SMS_ConfigParam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SMS_Message" EntityType="Self.SMS_Message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Surah" EntityType="Self.Surah" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TargetType" EntityType="Self.TargetType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAyat" EntityType="Self.UserAyat" Schema="dbo" store:Type="Tables" />
@@ -1295,6 +1333,10 @@
     <AssociationSet Name="FK_Doaa_DoaaMainCategory" Association="Self.FK_Doaa_DoaaMainCategory">
       <End Role="DoaaMainCategory" EntitySet="DoaaMainCategory" />
       <End Role="Doaa" EntitySet="Doaa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoaaContent_Doaa" Association="Self.FK_DoaaContent_Doaa">
+      <End Role="Doaa" EntitySet="Doaa" />
+      <End Role="DoaaContent" EntitySet="DoaaContent" />
     </AssociationSet>
     <AssociationSet Name="FK_DoaaDetails_Doaa" Association="Self.FK_DoaaDetails_Doaa">
       <End Role="Doaa" EntitySet="Doaa" />

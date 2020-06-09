@@ -30,6 +30,7 @@ namespace MobileApplication.Context
         public bool IsActive { get; set; }
         public string GCMID { get; set; }
         public string APNID { get; set; }
+        public Nullable<bool> NotificationOn { get; set; }
     
         public virtual ICollection<Group> Group { get; set; }
         public virtual ICollection<GroupUser> GroupUser { get; set; }

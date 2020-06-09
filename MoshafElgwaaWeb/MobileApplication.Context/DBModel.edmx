@@ -273,6 +273,16 @@
           <Property Name="DoaaContent" Type="nvarchar(max)" />
           <Property Name="DoaaMeanings" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="DoaaContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="DoaaID" Type="int" Nullable="false" />
+          <Property Name="VoicePath" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="DoaaItemSource">
           <Key>
             <PropertyRef Name="ID" />
@@ -283,7 +293,7 @@
           <Property Name="ItemSource" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ItemSynonyms" Type="nvarchar(max)" />
           <Property Name="Type" Type="nvarchar" MaxLength="150" />
-          <Property Name="Reference" Type="nvarchar(max)" />
+          <Property Name="Reference" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="DoaaMainCategory">
           <Key>
@@ -328,6 +338,9 @@
           <Property Name="StartPage" Type="int" />
           <Property Name="EndPage" Type="int" />
           <Property Name="PagesCount" Type="int" />
+          <Property Name="StartAya" Type="int" />
+          <Property Name="EndAya" Type="int" />
+          <Property Name="EndSurahID" Type="int" />
         </EntityType>
         <EntityType Name="GroupUser">
           <Key>
@@ -527,6 +540,16 @@
           <Property Name="StartAyah" Type="int" />
           <Property Name="EndAyah" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TargetType">
           <Key>
             <PropertyRef Name="ID" />
@@ -546,6 +569,7 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="GCMID" Type="nvarchar" MaxLength="300" />
           <Property Name="APNID" Type="nvarchar" MaxLength="300" />
+          <Property Name="NotificationOn" Type="bit" />
         </EntityType>
         <EntityType Name="UserAyat">
           <Key>
@@ -906,6 +930,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DoaaContent_Doaa">
+          <End Role="Doaa" Type="Self.Doaa" Multiplicity="1" />
+          <End Role="DoaaContent" Type="Self.DoaaContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doaa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DoaaContent">
+              <PropertyRef Name="DoaaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DoaaDetails_Doaa">
           <End Role="Doaa" Type="Self.Doaa" Multiplicity="1" />
           <End Role="DoaaItemSource" Type="Self.DoaaItemSource" Multiplicity="*" />
@@ -1162,6 +1198,7 @@
           <EntitySet Name="CU_Role_Program" EntityType="Self.CU_Role_Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DaysOfWeek" EntityType="Self.DaysOfWeek" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doaa" EntityType="Self.Doaa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoaaContent" EntityType="Self.DoaaContent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DoaaItemSource" EntityType="Self.DoaaItemSource" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DoaaMainCategory" EntityType="Self.DoaaMainCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
@@ -1185,6 +1222,7 @@
           <EntitySet Name="SMS_ConfigParam" EntityType="Self.SMS_ConfigParam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SMS_Message" EntityType="Self.SMS_Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Surah" EntityType="Self.Surah" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TargetType" EntityType="Self.TargetType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAyat" EntityType="Self.UserAyat" Schema="dbo" store:Type="Tables" />
@@ -1300,6 +1338,10 @@
           <AssociationSet Name="FK_Doaa_DoaaMainCategory" Association="Self.FK_Doaa_DoaaMainCategory">
             <End Role="DoaaMainCategory" EntitySet="DoaaMainCategory" />
             <End Role="Doaa" EntitySet="Doaa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoaaContent_Doaa" Association="Self.FK_DoaaContent_Doaa">
+            <End Role="Doaa" EntitySet="Doaa" />
+            <End Role="DoaaContent" EntitySet="DoaaContent" />
           </AssociationSet>
           <AssociationSet Name="FK_DoaaDetails_Doaa" Association="Self.FK_DoaaDetails_Doaa">
             <End Role="Doaa" EntitySet="Doaa" />
@@ -1619,6 +1661,12 @@
           <AssociationSet Name="FK_DoaaDetails_Doaa" Association="QVMobileApplicationModel.FK_DoaaDetails_Doaa">
             <End Role="Doaa" EntitySet="Doaa" />
             <End Role="DoaaItemSource" EntitySet="DoaaItemSource" />
+          </AssociationSet>
+          <EntitySet Name="DoaaContent" EntityType="QVMobileApplicationModel.DoaaContent" />
+          <EntitySet Name="sysdiagrams" EntityType="QVMobileApplicationModel.sysdiagrams" />
+          <AssociationSet Name="FK_DoaaContent_Doaa" Association="QVMobileApplicationModel.FK_DoaaContent_Doaa">
+            <End Role="Doaa" EntitySet="Doaa" />
+            <End Role="DoaaContent" EntitySet="DoaaContent" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="TableRef_Result">
@@ -1983,6 +2031,9 @@
           <NavigationProperty Name="Group" Relationship="QVMobileApplicationModel.FK_GroupTarget_Group" FromRole="GroupTarget" ToRole="Group" />
           <NavigationProperty Name="PeriodType" Relationship="QVMobileApplicationModel.FK_GroupTarget_PeriodType" FromRole="GroupTarget" ToRole="PeriodType" />
           <NavigationProperty Name="TargetType" Relationship="QVMobileApplicationModel.FK_GroupTarget_TargetType" FromRole="GroupTarget" ToRole="TargetType" />
+          <Property Name="StartAya" Type="Int32" />
+          <Property Name="EndAya" Type="Int32" />
+          <Property Name="EndSurahID" Type="Int32" />
         </EntityType>
         <EntityType Name="GroupUser">
           <Key>
@@ -2205,6 +2256,7 @@
           <NavigationProperty Name="GroupUser" Relationship="QVMobileApplicationModel.FK_GroupUser_User" FromRole="User" ToRole="GroupUser" />
           <NavigationProperty Name="UserAyat" Relationship="QVMobileApplicationModel.FK_UserAyat_User" FromRole="User" ToRole="UserAyat" />
           <NavigationProperty Name="UserCode" Relationship="QVMobileApplicationModel.FK_UserCode_User" FromRole="User" ToRole="UserCode" />
+          <Property Name="NotificationOn" Type="Boolean" />
         </EntityType>
         <EntityType Name="UserAyat">
           <Key>
@@ -2760,6 +2812,7 @@
           <Property Name="DoaaMeanings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DoaaMainCategory" Relationship="QVMobileApplicationModel.FK_Doaa_DoaaMainCategory" FromRole="Doaa" ToRole="DoaaMainCategory" />
           <NavigationProperty Name="DoaaItemSource" Relationship="QVMobileApplicationModel.FK_DoaaDetails_Doaa" FromRole="Doaa" ToRole="DoaaItemSource" />
+          <NavigationProperty Name="DoaaContent1" Relationship="QVMobileApplicationModel.FK_DoaaContent_Doaa" FromRole="Doaa" ToRole="DoaaContent" />
         </EntityType>
         <Association Name="FK_ArticleItemExplanation_Article">
           <End Type="QVMobileApplicationModel.Article" Role="Article" Multiplicity="1" />
@@ -2805,7 +2858,7 @@
           <Property Name="ItemSource" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ItemSynonyms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Reference" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Doaa" Relationship="QVMobileApplicationModel.FK_DoaaDetails_Doaa" FromRole="DoaaItemSource" ToRole="Doaa" />
         </EntityType>
         <Association Name="FK_DoaaDetails_Doaa">
@@ -2816,6 +2869,39 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="DoaaItemSource">
+              <PropertyRef Name="DoaaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DoaaContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="DoaaID" Type="Int32" Nullable="false" />
+          <Property Name="VoicePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doaa" Relationship="QVMobileApplicationModel.FK_DoaaContent_Doaa" FromRole="DoaaContent" ToRole="Doaa" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_DoaaContent_Doaa">
+          <End Type="QVMobileApplicationModel.Doaa" Role="Doaa" Multiplicity="1" />
+          <End Type="QVMobileApplicationModel.DoaaContent" Role="DoaaContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doaa">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DoaaContent">
               <PropertyRef Name="DoaaID" />
             </Dependent>
           </ReferentialConstraint>
@@ -3141,6 +3227,9 @@
           <EntitySetMapping Name="GroupTarget">
             <EntityTypeMapping TypeName="QVMobileApplicationModel.GroupTarget">
               <MappingFragment StoreEntitySet="GroupTarget">
+                <ScalarProperty Name="EndSurahID" ColumnName="EndSurahID" />
+                <ScalarProperty Name="EndAya" ColumnName="EndAya" />
+                <ScalarProperty Name="StartAya" ColumnName="StartAya" />
                 <ScalarProperty Name="PagesCount" ColumnName="PagesCount" />
                 <ScalarProperty Name="EndPage" ColumnName="EndPage" />
                 <ScalarProperty Name="StartPage" ColumnName="StartPage" />
@@ -3363,6 +3452,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="QVMobileApplicationModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="NotificationOn" ColumnName="NotificationOn" />
                 <ScalarProperty Name="APNID" ColumnName="APNID" />
                 <ScalarProperty Name="GCMID" ColumnName="GCMID" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
@@ -3442,6 +3532,28 @@
                 <ScalarProperty Name="SourceNumber" ColumnName="SourceNumber" />
                 <ScalarProperty Name="DoaaID" ColumnName="DoaaID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoaaContent">
+            <EntityTypeMapping TypeName="QVMobileApplicationModel.DoaaContent">
+              <MappingFragment StoreEntitySet="DoaaContent">
+                <ScalarProperty Name="VoicePath" ColumnName="VoicePath" />
+                <ScalarProperty Name="DoaaID" ColumnName="DoaaID" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QVMobileApplicationModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

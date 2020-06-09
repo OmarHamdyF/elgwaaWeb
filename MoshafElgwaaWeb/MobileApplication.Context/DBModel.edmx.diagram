@@ -101,6 +101,9 @@
         <EntityTypeShape EntityType="QVMobileApplicationModel.NamesOfAllah" Width="1.5" PointX="20.375" PointY="8.75" />
         <EntityTypeShape EntityType="QVMobileApplicationModel.DoaaItemSource" Width="1.5" PointX="17.25" PointY="7.25" />
         <AssociationConnector Association="QVMobileApplicationModel.FK_DoaaDetails_Doaa" />
+        <EntityTypeShape EntityType="QVMobileApplicationModel.DoaaContent" Width="1.5" PointX="17.25" PointY="24.625" />
+        <EntityTypeShape EntityType="QVMobileApplicationModel.sysdiagrams" Width="1.5" PointX="21.375" PointY="15.75" />
+        <AssociationConnector Association="QVMobileApplicationModel.FK_DoaaContent_Doaa" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
